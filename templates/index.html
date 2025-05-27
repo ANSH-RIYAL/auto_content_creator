@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Story Video Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #222; color: #eee; padding: 40px; }
+        .container { max-width: 600px; margin: auto; background: #333; padding: 30px; border-radius: 10px; }
+        textarea { width: 100%; height: 120px; font-size: 1.1em; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 10px; }
+        .slider-label { margin-top: 20px; }
+        input[type=range] { width: 100%; }
+        button { padding: 10px 30px; font-size: 1.1em; background: #4caf50; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #388e3c; }
+        .download-link { margin-top: 30px; display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Story Video Generator</h2>
+        <form method="post">
+            <label for="passage">Paste your story passage:</label>
+            <textarea id="passage" name="passage" required></textarea>
+            <label for="font_size" class="slider-label">Font Size: <span id="fontSizeValue">48</span></label>
+            <input type="range" id="font_size" name="font_size" min="24" max="96" value="48" oninput="document.getElementById('fontSizeValue').innerText = this.value">
+            <button type="submit">Generate Video</button>
+        </form>
+        {% if video_ready %}
+            <a class="download-link" href="/download">Download Your Video</a>
+        {% endif %}
+    </div>
+</body>
+</html> 
